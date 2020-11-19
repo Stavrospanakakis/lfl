@@ -31,7 +31,7 @@ go install github.com/Stavrospanakakis/lfl
 
 # Copy configuration file to home
 echo "Creating configuration file..."
-cp $(pwd)/config/.lfl.example.json $HOME 
+cp $(pwd)/config/.lfl.example.json $HOME/.lfl.json
 cd ..
 
 # Remove repository
