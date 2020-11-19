@@ -1,0 +1,11 @@
+{
+    "1" : {
+        "name": "Example Lecture 1",
+        "link": "https://zoom.us/j/<rest-of-the-link>"
+    },
+    "2": {
+        "name": "Example Lecture 2",
+        "link": "https://zoom.us/j/<rest-of-the-link>"
+    },
+    "totalSum":"2"
+}
