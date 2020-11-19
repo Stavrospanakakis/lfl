@@ -24,7 +24,7 @@ command_exists go || {
 
 # Install
 echo "Installing..."
-export GOPATH="/usr/local/"
+export GOPATH="/usr/local"
 export PATH=$PATH:$GOPATH/bin
 cd $(pwd)/lfl
 go install github.com/Stavrospanakakis/lfl
