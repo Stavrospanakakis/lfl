@@ -70,3 +70,4 @@ Run:
 $ wget https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/scripts/uninstall.sh
 $ sudo sh uninstall.sh
 ```
+## Example addition
