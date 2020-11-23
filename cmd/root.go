@@ -40,10 +40,12 @@ func Execute() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
-	err := services.ShowLecturesList()
-	if err != nil {
-		fmt.Println(err)
+	lFlag, _ := rootCmd.Flags().GetString("lecture")
+	if lFlag == "" {
+		err := services.ShowLecturesList()
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 }
 
