@@ -19,9 +19,7 @@ var rootCmd = &cobra.Command{
 	Use:   "lfl",
 	Short: "lfl opens the link of the lecture of your choice in zoom",
 	Long: `lfl (Links for Lectures) opens the link of the lecture of your choice
-in zoom. You add the subjects' info in your config file and you are done.
-Current configuration file only supports the lectures of the 3rd Year of Department
-of Informatics at Ionian University.`,
+in zoom. You add the subjects' info in your config file and you are done.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		lectureID, _ := cmd.Flags().GetString("lecture")
 		err := services.GetLinkByID(lectureID)
