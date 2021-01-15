@@ -52,7 +52,7 @@ func init() {
 	var lecture string
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.lfl.json)")
-	rootCmd.Flags().StringVarP(&lecture, "lecture", "l", "", "The id of the lecture of your choice (Type lfl -i to see the available ids)")
+	rootCmd.Flags().StringVarP(&lecture, "lecture", "l", "", "The id of the lecture of your choice (Type lfl to see the available ids)")
 }
 
 // initConfig reads in config file and ENV variables if set.
