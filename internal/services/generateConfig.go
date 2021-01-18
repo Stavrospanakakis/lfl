@@ -1,28 +1,20 @@
 package services
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 )
 
 // GenerateConfig generates the configuration file
 func (s *Service) GenerateConfig(configPath string) error {
 
+	fmt.Println("\033[31m" + "It seems you don't have any lectures saved. Let's add them!" + "\033[0m")
 	lectures := s.AddLectures()
 
-	configFile, err := json.MarshalIndent(lectures, "", " ")
+	err := s.WriteLecturesToConfigurationFile(lectures, configPath)
 
 	if err != nil {
 		return err
 	}
 
-	err = ioutil.WriteFile(configPath, configFile, 0644)
-
-	if err != nil {
-		return err
-	}
-
-	fmt.Println("\033[32m" + "Lectures added successfully!" + "\033[0m")
 	return nil
 }

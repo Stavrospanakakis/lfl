@@ -22,22 +22,32 @@ in zoom. You add the subjects' info in your config file and you are done.`,
 			fmt.Println(err)
 			os.Exit(1)
 		}
+		wantToAddLectures, _ := cmd.Flags().GetBool("add")
 
-		if s.ConfigurationFileExists(configPath) {
-			err := s.Run(configPath)
-			if err != nil {
-				fmt.Println(err)
+		if wantToAddLectures {
+			s.AddNewLectures(configPath)
+		} else {
+			if s.ConfigurationFileExists(configPath) {
+				err := s.Run(configPath)
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+			} else {
+				err := s.GenerateConfig(configPath)
+				if err != nil {
+					fmt.Println(err)
+				}
 				os.Exit(1)
 			}
-		} else {
-			err := s.GenerateConfig(configPath)
-			if err != nil {
-				fmt.Println(err)
-			}
-			os.Exit(1)
 		}
 
 	},
+}
+
+func init() {
+	rootCmd.PersistentFlags().Bool("add", false, "add new lectures")
+
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

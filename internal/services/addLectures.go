@@ -12,10 +12,16 @@ import (
 func (s *Service) AddLectures() []models.Lecture {
 	var lectures []models.Lecture
 	var lecture models.Lecture
+	var ID int
 
-	fmt.Println("\033[31m" + "It seems you don't have any lectures saved. Let's add them!" + "\033[0m")
+	if s.Lectures == nil {
+		ID = 0
+	} else {
+		lectures = s.Lectures
+		lecturesLength := len(lectures)
+		ID = lecturesLength
+	}
 
-	ID := 0
 	stop := "y"
 	for stop != "n" {
 		var name string
