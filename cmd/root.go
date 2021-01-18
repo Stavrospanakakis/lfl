@@ -23,11 +23,14 @@ in zoom. You add the subjects' info in your config file and you are done.`,
 			os.Exit(1)
 		}
 		wantToAddLectures, _ := cmd.Flags().GetBool("add")
+		wantToRemoveLectures, _ := cmd.Flags().GetBool("remove")
 
 		if wantToAddLectures {
 			s.AddNewLectures(configPath)
+		} else if wantToRemoveLectures && s.Lectures != nil {
+			s.RemoveLectures(configPath)
 		} else {
-			if s.ConfigurationFileExists(configPath) {
+			if s.ConfigurationFileExists(configPath) || s.Lectures != nil {
 				err := s.Run(configPath)
 				if err != nil {
 					fmt.Println(err)
@@ -47,7 +50,7 @@ in zoom. You add the subjects' info in your config file and you are done.`,
 
 func init() {
 	rootCmd.PersistentFlags().Bool("add", false, "add new lectures")
-
+	rootCmd.PersistentFlags().Bool("remove", false, "remove lecture")
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

@@ -22,7 +22,7 @@ func (s *Service) WriteLecturesToConfigurationFile(lectures []models.Lecture, co
 		return err
 	}
 
-	fmt.Println("\033[32m" + "Lectures added successfully!" + "\033[0m")
+	fmt.Println("\033[32m" + "Proccess completed successfully!" + "\033[0m")
 
 	return nil
 }
