@@ -24,7 +24,11 @@ in zoom. You add the subjects' info in your config file and you are done.`,
 		}
 
 		if s.ConfigurationFileExists(configPath) {
-			s.Run(configPath)
+			err := s.Run(configPath)
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(1)
+			}
 		} else {
 			err := s.GenerateConfig(configPath)
 			if err != nil {
