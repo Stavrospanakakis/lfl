@@ -34,19 +34,15 @@ const Home = () => {
 
             <h3 className="font-bold text-xl mt-6">Debian & Debian-Based distributions</h3>
             <div className="mt-2">
-              <img className="lg:h-2/6 lg:w-4/6" src="/arch-installation.png"/>
+              <img src="/debian-installation.png"/>
             </div>
 
             <h3 className="font-bold text-xl mt-6">Arch & Arch-Based distributions</h3>
             <div className="mt-2">
-              <img className="lg:h-2/6 lg:w-4/6" src="/arch-installation.png"/>
+              <img src="/arch-installation.png"/>
             </div>
 
-            <h3 className="font-bold text-xl mt-6">Other distributions</h3>
-            <div className="mt-2">
-              <img className="lg:h-2/6 lg:w-4/6" src="/arch-installation.png"/>
-            </div>
-            <div className="mt-8">
+           <div className="mt-8">
               <a href="https://github.com/Stavrospanakakis/lfl" 
                className="px-4 py-2 rounded-md border-2 border-gray-900 bg-gray-900 text-white"
                target="_blank"
