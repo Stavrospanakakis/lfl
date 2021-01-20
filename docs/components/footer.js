@@ -1,4 +1,4 @@
-export default function Footer() {
+const Footer = () => {
     return (
         <footer>
               <div className="bg-black border border-gray-300 mt-10"></div>
@@ -6,3 +6,5 @@ export default function Footer() {
         </footer>
     )
 }
+
+export default Footer

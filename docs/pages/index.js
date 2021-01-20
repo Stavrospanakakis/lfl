@@ -1,46 +1,17 @@
 import Head from 'next/head'
+import Footer  from '../components/footer'
+import Navbar from '../components/navbar'
 import Section from '../components/section'
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="bg-gray-200">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>lfl - Links for lectures</title>
       </Head>
-
       <main>
-        <header>
-          <nav class="relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black mb-3">
-            <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-              <div class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
-                <a class="text-xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap text-white" href="#pablo">
-                  lfl - Links for Lectures
-                </a>
-                <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
-                  <span class="block relative w-6 h-px rounded-sm bg-white"></span>
-                  <span class="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-                  <span class="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-                </button>
-              </div>
-              <div class="lg:flex flex-grow items-center" id="example-navbar-warning">
-                <ul class="flex flex-col lg:flex-row list-none ml-auto">
-                    <li class="nav-item">
-                      <a class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75" href="#installation">
-                        Installation
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75" href="#usage">
-                        Usage
-                      </a>
-                    </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </header>
-        <div className="container px-4 lg:px-40 mx-auto">
+        <Navbar/>
+        <div className="container px-4 lg:px-40 mx-auto pt-16">
           <div>
             <Section
               id="#demonstation"
@@ -116,10 +87,10 @@ export default function Home() {
           </div>
         </div>
         </main>
-        <footer>
-              <div className="bg-black border border-gray-300 mt-10"></div>
-              <div align="center" className="mt-2 p-5">© 2021 Stavros Panakakis</div>
-        </footer>
+        <Footer/>
       </div>
+      
   )
 }
+
+export default Home

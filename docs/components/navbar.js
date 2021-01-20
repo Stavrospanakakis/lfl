@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Navbar() {
+const Navbar = () => {
     const [isClicked, setisClicked] = useState(false)
 
     const handleClick = () => {
@@ -46,3 +46,5 @@ export default function Navbar() {
 
     )
 }
+
+export default Navbar
