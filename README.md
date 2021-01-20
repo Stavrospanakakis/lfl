@@ -1,7 +1,6 @@
 # lfl - Links for Lectures
 
-## Demonstation
-lfl (Links for Lectures) is a CLI which opens the lectures' virtual meeting of your choice
+lfl - Links for Lectures is a command line interface which opens the lectures' virtual meeting of your choice
 from terminal. It currently supports only Zoom & Webex links and is tested only in Linux environments.
 
 <p align="center">
