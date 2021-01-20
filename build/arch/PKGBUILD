@@ -1,0 +1,24 @@
+# Maintainer: Stavros Panakakis <stavrospanakakis@gmail.com>
+pkgname=lfl
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="lfl (Links for Lectures) is a CLI which opens the lectures' virtual meeting of your choice from terminal. It currently supports only Zoom & Webex links and is tested only in Linux environments."
+arch=('any')
+url="https://github.com/Stavrospanakakis/lfl"
+license=('MIT')
+makedepends=(go)
+md5sums=('041d53eb6dd2b5ad1ea416525b4785d1')
+source=("$pkgname-$pkgver.tar.gz"::https://github.com/Stavrospanakakis/lfl/archive/v$pkgver.tar.gz)
+
+build() {
+    mkdir -p "$srcdir/go/src/github.com/$pkgname"
+    export GOPATH="$srcdir/go"
+    mv "$srcdir/$pkgname-$pkgver"/* "$srcdir/go/src/github.com/$pkgname"
+    cd "$srcdir/go/src/github.com/$pkgname"
+    go build
+}
+
+package() {
+    install -Dm755 "$srcdir/go/src/github.com/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+}
+
