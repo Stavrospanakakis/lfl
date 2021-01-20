@@ -11,9 +11,9 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "lfl",
-	Short: "lfl opens the link of the lecture of your choice in zoom",
-	Long: `lfl (Links for Lectures) opens the link of the lecture of your choice
-in zoom. You add the subjects' info in your config file and you are done.`,
+	Short: "lfl opens the lectures virtual meeting of your choice with just one command.",
+	Long: `lfl (Links for Lectures) is a CLI which opens the lectures virtual meeting of your choice
+from terminal. It currently supports only Zoom & Webex links and it is tested only in Linux environments.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		s := services.MakeService()
 		configPath, err := s.GetConfigPath()
