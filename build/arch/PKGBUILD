@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/Stavrospanakakis/lfl"
 license=('MIT')
 makedepends=(go)
-md5sums=('041d53eb6dd2b5ad1ea416525b4785d1')
 source=("$pkgname-$pkgver.tar.gz"::https://github.com/Stavrospanakakis/lfl/archive/v$pkgver.tar.gz)
 
 build() {
@@ -22,3 +21,4 @@ package() {
     install -Dm755 "$srcdir/go/src/github.com/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
+md5sums=('a4972fcd8f4739761b901417cb5d6b93')
