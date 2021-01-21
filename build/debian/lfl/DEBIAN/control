@@ -1,0 +1,10 @@
+Package: lfl
+Version: 1.0.0
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 1024
+Maintainer: Stavros Panakakis
+Description: lfl (Links for Lectures) is a CLI which opens the lectures' virtual meeting of your choice from terminal. It currently supports only Zoom & Webex links and is tested only in Linux environments.
+

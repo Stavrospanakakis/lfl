@@ -1,72 +1,50 @@
-# lfl (Links for Lectures)
-lfl (Links for Lectures) is a CLI which opens the link of the lecture of your choice
-in zoom. You add the subjects' info in your config file and you are done.
+# lfl - Links for Lectures
 
-## Requirements
-- Go
-- Git
+lfl - Links for Lectures is a command line interface which opens the lectures' virtual meeting of your choice
+from terminal. It currently supports only Zoom & Webex links and is tested only in Linux environments.
 
-You can remove them later.
+<p align="center">
+  <img src="./assets/preview.png"/>
+</p>
 
-## Install
+## Installation
+lfl is tested only in Linux environments. Please, use the instructions below to install it on your system.
 
-### Basic installation
-Run:
+### Debian & Debian-Based distributions
 ```
-$ sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/scripts/install.sh)"
+➜ wget https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/build/Makefile && make debian
 ```
 
-### Manual Installation
-Run:
+### Arch & Arch-Based distributions
 ```
-$ wget https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/scripts/install.sh
-$ sudo sh install.sh
+➜ wget https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/build/Makefile && make arch
 ```
 
 ## Usage
-### Available options
 
-**Manual of the CLI**
-```
-$ lfl --help 
-```
+### Manual
 
-**Show all the ids and open the lecture of your choice**
-```
-$ lfl
-```
+<p align="center">
+  <img src="./assets/manual.png"/>
+</p>
 
-**Open the link of the lecture of your choice**
-```
-$ lfl -l <lecture-id> 
-```
+### First time running lfl
 
-**Add your own configuration file**
-```
-$ lfl --config <config-file-location> 
-```
+<p align="center">
+  <img src="./assets/first-time.png"/>
+</p>
 
-## Configuration
-Default configuration file is located at $HOME/.lfl.json. Add the lectures of your choice and you are done.
+### Add lectures
 
-```
-{
-    "1" : {
-        "name": "Example Lecture 1",
-        "link": "https://zoom.us/j/<rest-of-the-link>"
-    },
-    "2": {
-        "name": "Example Lecture 2",
-        "link": "https://zoom.us/j/<rest-of-the-link>"
-    },
-    "totalSum":"2"
-}
-```
+<p align="center">
+  <img src="./assets/add.png"/>
+</p>
 
 
-## Uninstall
-Run:
-```
-$ wget https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/scripts/uninstall.sh
-$ sudo sh uninstall.sh
-```
+### Remove lectures
+
+<p align="center">
+  <img src="./assets/remove.png"/>
+</p>
+
+

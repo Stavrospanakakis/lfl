@@ -4,75 +4,62 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/Stavrospanakakis/lfl/internal/services"
 	"github.com/spf13/cobra"
-
-	homedir "github.com/mitchellh/go-homedir"
-	"github.com/spf13/viper"
-
-	"github.com/Stavrospanakakis/lfl/services"
 )
-
-var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "lfl",
-	Short: "lfl opens the link of the lecture of your choice in zoom",
-	Long: `lfl (Links for Lectures) opens the link of the lecture of your choice
-in zoom. You add the subjects' info in your config file and you are done.`,
+	Short: "lfl opens the lectures virtual meeting of your choice with just one command.",
+	Long: `lfl (Links for Lectures) is a CLI which opens the lectures virtual meeting of your choice
+from terminal. It currently supports only Zoom & Webex links and it is tested only in Linux environments.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		lectureID, _ := cmd.Flags().GetString("lecture")
-		err := services.GetLinkByID(lectureID)
-		if err != nil {
-			fmt.Println(err)
-		}
+		s := services.MakeService()
+		err := s.SetConfigPath()
 
-	},
-}
-
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
-// It also shows a list of the lectures
-func Execute() {
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	lFlag, _ := rootCmd.Flags().GetString("lecture")
-	if lFlag == "" {
-		err := services.ShowLecturesList()
-		if err != nil {
-			fmt.Println(err)
-		}
-	}
-}
-
-func init() {
-	cobra.OnInitialize(initConfig)
-	var lecture string
-
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.lfl.json)")
-	rootCmd.Flags().StringVarP(&lecture, "lecture", "l", "", "The id of the lecture of your choice (Type lfl to see the available ids)")
-}
-
-// initConfig reads in config file and ENV variables if set.
-func initConfig() {
-	if cfgFile != "" {
-		// Use config file from the flag.
-		viper.SetConfigFile(cfgFile)
-	} else {
-		// Find home directory.
-		home, err := homedir.Dir()
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".lfl" (without extension).
-		viper.AddConfigPath(home)
-		viper.SetConfigType("json")
-		viper.SetConfigName(".lfl.json")
-	}
+		wantToAddLectures, _ := cmd.Flags().GetBool("add")
+		wantToRemoveLectures, _ := cmd.Flags().GetBool("remove")
 
-	viper.AutomaticEnv() // read in environment variables that match
+		if wantToAddLectures {
+			s.AddNewLectures()
+		} else if wantToRemoveLectures {
+			s.RemoveLectures()
+		} else {
+			if s.ConfigurationFileExists() || s.Lectures != nil {
+				err := s.Run()
+				if err != nil {
+					fmt.Println(err)
+					os.Exit(1)
+				}
+			} else {
+				err := s.GenerateConfig()
+				if err != nil {
+					fmt.Println(err)
+				}
+				os.Exit(1)
+			}
+		}
+
+	},
+}
+
+func init() {
+	rootCmd.PersistentFlags().Bool("add", false, "add new lectures")
+	rootCmd.PersistentFlags().Bool("remove", false, "remove lecture")
+}
+
+// Execute adds all child commands to the root command and sets flags appropriately.
+// This is called by main.main(). It only needs to happen once to the rootCmd.
+func Execute() {
+	err := rootCmd.Execute()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
