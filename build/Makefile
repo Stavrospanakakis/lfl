@@ -4,4 +4,4 @@ debian:
 
 arch:
 	wget https://raw.githubusercontent.com/Stavrospanakakis/lfl/main/build/arch/PKGBUILD
-	makepkg -sicr
+	makepkg -g >> PKGBUILD && makepkg -sic

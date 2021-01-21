@@ -21,4 +21,3 @@ package() {
     install -Dm755 "$srcdir/go/src/github.com/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
-md5sums=('a4972fcd8f4739761b901417cb5d6b93')
