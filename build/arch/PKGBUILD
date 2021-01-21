@@ -1,6 +1,6 @@
 # Maintainer: Stavros Panakakis <stavrospanakakis@gmail.com>
 pkgname=lfl
-pkgver=1.0.0
+pkgver=1.0.0-beta
 pkgrel=1
 pkgdesc="lfl (Links for Lectures) is a CLI which opens the lectures' virtual meeting of your choice from terminal. It currently supports only Zoom & Webex links and is tested only in Linux environments."
 arch=('any')
