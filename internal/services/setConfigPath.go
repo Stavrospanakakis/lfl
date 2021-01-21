@@ -5,13 +5,15 @@ import (
 )
 
 // GetConfigPath returns the configuration file path
-func (s *Service) GetConfigPath() (string, error) {
+func (s *Service) SetConfigPath() error {
 	home, err := homedir.Dir()
 
 	if err != nil {
-		return "", err
+		return err
 	}
 
 	configPath := home + "/.lfl.json"
-	return configPath, err
+
+	s.ConfigPath = configPath
+	return err
 }

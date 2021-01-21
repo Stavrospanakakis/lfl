@@ -9,7 +9,7 @@ import (
 func TestGetConfigPath(t *testing.T) {
 	s := services.MakeService()
 	t.Run("Should return error", func(t *testing.T) {
-		_, err := s.GetConfigPath()
+		err := s.SetConfigPath()
 		if err != nil {
 			t.Fail()
 		}

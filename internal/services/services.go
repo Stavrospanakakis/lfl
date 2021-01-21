@@ -6,7 +6,8 @@ import (
 
 // Service contains the lectures
 type Service struct {
-	Lectures []models.Lecture
+	Lectures   []models.Lecture
+	ConfigPath string
 }
 
 // MakeService makes service

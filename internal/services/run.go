@@ -1,8 +1,8 @@
 package services
 
 // Run runs the main functionallity of the program
-func (s *Service) Run(configPath string) error {
-	err := s.ReadLecturesFromConfigurationFile(configPath)
+func (s *Service) Run() error {
+	err := s.ReadLecturesFromConfigurationFile()
 
 	if err != nil {
 		return err

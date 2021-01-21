@@ -11,7 +11,8 @@ func TestReadLecturesFromConfigurationFile(t *testing.T) {
 
 	t.Run("Should return error", func(t *testing.T) {
 		wrong_path := "this/is/a/wrong/path"
-		err := s.ReadLecturesFromConfigurationFile(wrong_path)
+		s.ConfigPath = wrong_path
+		err := s.ReadLecturesFromConfigurationFile()
 
 		if err == nil {
 			t.Fail()

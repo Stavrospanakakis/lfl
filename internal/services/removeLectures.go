@@ -3,8 +3,8 @@ package services
 import "github.com/Stavrospanakakis/lfl/internal/models"
 
 // RemoveLectures removes lectures from list
-func (s *Service) RemoveLectures(configPath string) error {
-	err := s.ReadLecturesFromConfigurationFile(configPath)
+func (s *Service) RemoveLectures() error {
+	err := s.ReadLecturesFromConfigurationFile()
 	if err != nil {
 		return err
 	}
@@ -24,7 +24,7 @@ func (s *Service) RemoveLectures(configPath string) error {
 		}
 	}
 
-	err = s.WriteLecturesToConfigurationFile(updatedLectures, configPath)
+	err = s.WriteLecturesToConfigurationFile(updatedLectures)
 	if err != nil {
 		return err
 	}

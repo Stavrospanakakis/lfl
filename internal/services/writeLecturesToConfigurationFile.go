@@ -9,14 +9,14 @@ import (
 )
 
 // WriteLecturesToConfigurationFile writes lectures to configuration file
-func (s *Service) WriteLecturesToConfigurationFile(lectures []models.Lecture, configPath string) error {
+func (s *Service) WriteLecturesToConfigurationFile(lectures []models.Lecture) error {
 	configFile, err := json.MarshalIndent(lectures, "", " ")
 
 	if err != nil {
 		return err
 	}
 
-	err = ioutil.WriteFile(configPath, configFile, 0644)
+	err = ioutil.WriteFile(s.ConfigPath, configFile, 0644)
 
 	if err != nil {
 		return err

@@ -16,28 +16,29 @@ var rootCmd = &cobra.Command{
 from terminal. It currently supports only Zoom & Webex links and it is tested only in Linux environments.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		s := services.MakeService()
-		configPath, err := s.GetConfigPath()
+		err := s.SetConfigPath()
 
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
+
 		wantToAddLectures, _ := cmd.Flags().GetBool("add")
 		wantToRemoveLectures, _ := cmd.Flags().GetBool("remove")
 
 		if wantToAddLectures {
-			s.AddNewLectures(configPath)
-		} else if wantToRemoveLectures && s.Lectures != nil {
-			s.RemoveLectures(configPath)
+			s.AddNewLectures()
+		} else if wantToRemoveLectures {
+			s.RemoveLectures()
 		} else {
-			if s.ConfigurationFileExists(configPath) || s.Lectures != nil {
-				err := s.Run(configPath)
+			if s.ConfigurationFileExists() || s.Lectures != nil {
+				err := s.Run()
 				if err != nil {
 					fmt.Println(err)
 					os.Exit(1)
 				}
 			} else {
-				err := s.GenerateConfig(configPath)
+				err := s.GenerateConfig()
 				if err != nil {
 					fmt.Println(err)
 				}

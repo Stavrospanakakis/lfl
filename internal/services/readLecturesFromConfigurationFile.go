@@ -8,8 +8,8 @@ import (
 )
 
 // ReadLecturesFromConfigurationFile reads lectures from configuration file
-func (s *Service) ReadLecturesFromConfigurationFile(configPath string) error {
-	file, err := os.Open(configPath)
+func (s *Service) ReadLecturesFromConfigurationFile() error {
+	file, err := os.Open(s.ConfigPath)
 	defer file.Close()
 
 	if err != nil {
